@@ -1,0 +1,24 @@
+
+public class demo1 {
+
+	public static void main(String[] args) {
+		int age = 11;
+		System.out.println(age);
+		System.out.println("Hello World");
+		boolean result = oddoreven(age);
+		System.out.println(result);
+		int n = 5
+	
+	}
+	static boolean oddoreven(int num) {
+		return num % 2 == 0;
+	}
+
+	static void stars(int n) {
+		for(int i=0;i<=n;i++) {
+			System.out.println("*"); 
+			
+		}
+	}
+	
+}

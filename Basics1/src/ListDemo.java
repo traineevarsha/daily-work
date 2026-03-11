@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListDemo {
+	public static void main(String[] args) {
+		managebooks();
+		stringSuprise();
+	}
+		
+		public static void managebooks() {
+		List<String> books = new ArrayList();
+		books.add("Book1");
+		books.add("Book2");
+		books.add("Book3");
+		System.out.println(books.size());
+		books.remove(0);
+		System.out.println("after remove =" +books.size());
+		books.forEach((book)-> System.out.println(book)); 
+	}
+		public static void stringSuprise() {
+			String s1 = new String("book1");
+			String s2 = new String("book1");
+			String s3 = "book1";
+			String s4 = "book1";
+			System.out.println(s1 == s2);
+			System.out.println(s3 == s4);
+		}
+
+}
+
