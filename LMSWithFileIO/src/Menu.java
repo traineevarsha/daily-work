@@ -52,8 +52,7 @@ public class Menu {
                         System.out.println("Invalid choice");
                 }
 
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
 
                 System.out.println("Invalid input");
                 sc.nextLine();
@@ -77,8 +76,7 @@ public class Menu {
         float price = sc.nextFloat();
         sc.nextLine();
 
-        books b = new books(id, title, author, price);
-        lib.addbook(b);
+        lib.addBook(id, title, author, price);
     }
 
     void removeBook() {
