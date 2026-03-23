@@ -4,13 +4,13 @@ import java.util.List;
 public class Library {
 	List<Book> books = new ArrayList<>();
 
-	void add(int id, String title, float price, String author) {
+	public void add(int id, String title, float price, String author) {
 		Book book = new Book(id, title, price, author);
 		books.add(book);
 		System.out.println("Book added: " + title);
 	}
 
-	void reserve(String title) throws BookNotAvailableException {
+	public void reserve(String title) throws BookNotAvailableException {
 		if (title == null || title.trim().isEmpty()) {
 			throw new IllegalArgumentException("Title cannot be null or empty");
 		}
@@ -26,7 +26,7 @@ public class Library {
 		throw new BookNotAvailableException("Book is not available.");
 	}
 
-	List<Book> find(String title) {
+	public List<Book> find(String title) {
 		List<Book> foundBooks = new ArrayList<>();
 
 		if (title == null || title.trim().isEmpty()) {
@@ -42,7 +42,7 @@ public class Library {
 		return foundBooks;
 	}
 
-	Book remove(int id) throws Exception {
+	public Book remove(int id) throws Exception {
 		if (id <= 0) {
 			throw new IllegalArgumentException("Id must be positive");
 		}
@@ -60,7 +60,7 @@ public class Library {
 		throw new Exception("No book available for the id: " + id);
 	}
 
-	void displayBooks() {
+	public void displayBooks() {
 		System.out.println("\nBOOKS AVAILABLE");
 
 		boolean found = false;
@@ -68,7 +68,6 @@ public class Library {
 		for (Book book : books) {
 			if (book.getStatus() == STATUS.AVAILABLE) {
 				System.out.println(book);
-
 				found = true;
 			}
 		}
