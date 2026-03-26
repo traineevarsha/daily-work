@@ -1,0 +1,10 @@
+const users = [
+    { id: 1, name: "A", active: true },
+    { id: 2, name: "B", active: false },
+    { id: 3, name: "C", active: true }
+];
+console.log(users[0].name);
+users.forEach((user) => {
+    user.active = !user.active;
+});
+console.log(users);

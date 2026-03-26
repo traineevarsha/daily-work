@@ -1,0 +1,13 @@
+const User = {
+    name: "Varsha",
+    age: 10,
+    address: {
+        houseNo: 68,
+        street: "CV Raman",
+        pin: 560079
+    }
+};
+
+console.log(User);              
+console.log(User.address);         
+console.log(User.address.pin);     

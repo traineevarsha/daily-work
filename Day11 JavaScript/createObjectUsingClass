@@ -1,0 +1,5 @@
+class User {
+    name = 'Varsha';
+}
+const u1 = new User();
+console.log(u1);

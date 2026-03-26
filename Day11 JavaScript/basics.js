@@ -1,7 +1,10 @@
+const k = 50;
 for (var index = 0; index < 5; index++) {
-   // console.log(index);
+   console.log(index);
+   //const k = 50;
+   
 }
- console.log(index);
+ console.log(k);
 
 
 
