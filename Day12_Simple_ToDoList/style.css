@@ -1,0 +1,29 @@
+body {
+    font-family: Arial;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.app {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: bisque;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.completed {
+    text-decoration: line-through;
+    color: rebeccapurple;
+}
+.tick-mark{
+    background-color: lightgreen;
+}
+.cross-mark{
+    background-color: lightcoral;
+}
