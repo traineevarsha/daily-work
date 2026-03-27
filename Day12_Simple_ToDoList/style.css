@@ -1,50 +1,93 @@
 body {
-    font-family: Arial;
-    background: #fff;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
+
 .app {
     background: bisque;
     padding: 20px;
     width: 600px;
     border-radius: 10px;
 }
-.app input,
-.app button {
+
+.app input[type="text"],
+.app input[type="time"],
+.app input[type="number"] {
     display: block;
     width: 100%;
     margin-top: 10px;
     padding: 8px;
+    box-sizing: border-box;
 }
-.priority {
+
+.priority-row {
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 20px;
+    margin-top: 15px;
+    align-items: center;
 }
+
+.priority-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.button-row button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.sort-button {
+    background-color: royalblue;
+}
+
+.add-button {
+    background-color: rgb(45, 175, 45);
+}
+
 li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    list-style: none;
+    background: #fff3d9;
+    padding: 10px;
+    border-radius: 8px;
 }
+
 .completed {
     text-decoration: line-through;
     color: rebeccapurple;
 }
+
 .tick-mark {
     background-color: lightgreen;
-}
-.cross-mark {
-    background-color: lightcoral;
-}
-.add-button {
-    background-color: rgb(45, 175, 45);
-    color: white;
-    border: none;
+    border: 1px solid #555;
+    padding: 6px 10px;
     cursor: pointer;
 }
+
+.cross-mark {
+    background-color: lightcoral;
+    border: 1px solid #555;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
 .actions {
     display: flex;
     gap: 10px;

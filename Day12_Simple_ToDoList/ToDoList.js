@@ -1,9 +1,7 @@
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
-
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
-
 function addTodo() {
     const input = document.getElementById("todo-input");
     const time_input = document.getElementById("todo-time-input");
@@ -13,12 +11,10 @@ function addTodo() {
     const time = time_input.value;
     const hours = hours_taken.value;
     const priority = selectedPriority ? selectedPriority.value : "";
-
-    if (text === "") return;
+    if (text === "")return;
     if (time === "") return;
     if (hours === "") return;
     if (priority === "") return;
-
     todos.push({
         text: text,
         time_input: time,
@@ -42,7 +38,6 @@ function sortByName(){
     console.log(todos);
     saveTodos();
     renderTodos();
-    
 }
 function deleteTodo(index) {
     todos.splice(index, 1);
