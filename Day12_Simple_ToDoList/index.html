@@ -8,7 +8,7 @@
 <body>
 <div class="app">
     <h2>Daily Todo List</h2>
-    <input type="text" id="todo-input" placeholder="Enter task">
+    <input type="text" onkeyup="validate()" id="todo-input" placeholder="Enter task">
     <input type ="time" id="todo-time-input" placeholder="Enter time">
     <input type ="number" id="todo-hours-input" placeholder="Enter how long it'll take in hrs">
     <div class="priority-row">
@@ -25,6 +25,7 @@
             <button class="sort-button" onclick="sortByName()">Sort</button>
             <button class="add-button" onclick="addTodo()">Add</button>
     </div>
+    <div class = "error" id= "error"> Nameis mandatory </div>
     <ul id="todo-list"></ul>
 </div>
 <script src ="ToDoList.js"></script>

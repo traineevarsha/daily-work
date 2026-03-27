@@ -1,4 +1,5 @@
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
+const errorDiv= document.getElementById('error');
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
@@ -48,6 +49,10 @@ function toggleComplete(index) {
     todos[index].completed = !todos[index].completed;
     saveTodos();
     renderTodos();
+}
+function validate(){
+    errorDiv.style.display = (event.target.value.trim() !== '')?
+    'none' : 'inline';
 }
 function renderTodos() {
     const list = document.getElementById("todo-list");
