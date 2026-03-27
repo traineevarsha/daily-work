@@ -35,6 +35,15 @@ function addTodo() {
     saveTodos();
     renderTodos();
 }
+function sortByName(){
+    todos.sort((a,b) => {
+        return a.text.localeCompare(b.text);
+    })
+    console.log(todos);
+    saveTodos();
+    renderTodos();
+    
+}
 function deleteTodo(index) {
     todos.splice(index, 1);
     saveTodos();
