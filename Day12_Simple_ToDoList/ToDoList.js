@@ -1,5 +1,6 @@
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 const errorDiv= document.getElementById('error');
+const errorHoursDiv = document.getElementById('error-hours');
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
@@ -16,6 +17,7 @@ function addTodo() {
     if (time === "") return;
     if (hours === "") return;
     if (priority === "") return;
+    if (hours < 0) return;
     todos.push({
         text: text,
         time_input: time,
@@ -52,6 +54,10 @@ function toggleComplete(index) {
 }
 function validate(){
     errorDiv.style.display = (event.target.value.trim() !== '')?
+    'none' : 'inline';
+}
+function validateHours(){
+    errorHoursDiv.style.display = (event.target.value >= 0 && event.target.value !=='') ?
     'none' : 'inline';
 }
 function renderTodos() {

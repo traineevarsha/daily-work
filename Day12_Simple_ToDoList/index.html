@@ -10,7 +10,7 @@
     <h2>Daily Todo List</h2>
     <input type="text" onkeyup="validate()" id="todo-input" placeholder="Enter task">
     <input type ="time" id="todo-time-input" placeholder="Enter time">
-    <input type ="number" id="todo-hours-input" placeholder="Enter how long it'll take in hrs">
+    <input type="number" onkeyup="validateHours()" id="todo-hours-input" placeholder="Enter how long it'll take in hours">
     <div class="priority-row">
             <label>
                 <input type="radio" name="priority" value="Urgent">
@@ -21,11 +21,13 @@
                 Normal
             </label>
     </div>
-     <div class="button-row">
+    <div class="button-row">
             <button class="sort-button" onclick="sortByName()">Sort</button>
             <button class="add-button" onclick="addTodo()">Add</button>
     </div>
-    <div class = "error" id= "error"> Nameis mandatory </div>
+    <div class = "error" id= "error"> Name is mandatory to enter </div>
+    <div class="error" id="error-hours"> Hours cannot be negative </div>
+    
     <ul id="todo-list"></ul>
 </div>
 <script src ="ToDoList.js"></script>
