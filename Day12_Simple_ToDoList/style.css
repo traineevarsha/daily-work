@@ -6,24 +6,46 @@ body {
     margin-top: 50px;
 }
 .app {
-    background: white;
+    background: bisque;
     padding: 20px;
-    width: 300px;
+    width: 600px;
     border-radius: 10px;
-    background-color: bisque;
+}
+.app input,
+.app button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+}
+.priority {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
 }
 li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
 }
 .completed {
     text-decoration: line-through;
     color: rebeccapurple;
 }
-.tick-mark{
+.tick-mark {
     background-color: lightgreen;
 }
-.cross-mark{
+.cross-mark {
     background-color: lightcoral;
+}
+.add-button {
+    background-color: rgb(45, 175, 45);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.actions {
+    display: flex;
+    gap: 10px;
 }

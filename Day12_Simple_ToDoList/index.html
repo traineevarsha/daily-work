@@ -9,9 +9,13 @@
 </head>
 <body>
 <div class="app">
-    <h2>Todo App</h2>
+    <h2>Daily Todo List</h2>
     <input type="text" id="todo-input" placeholder="Enter task">
-    <button onclick="addTodo()">Add</button>
+    <input type ="time" id="todo-time-input" placeholder="Enter time">
+    <input type ="number" id="todo-hours-input" placeholder="Enter how long it'll take in hrs">
+    <input type="radio" name="priority" value="Urgent"> Urgent
+    <input type="radio" name="priority" value="Normal"> Normal
+    <button class="add-button" onclick="addTodo()">Add</button>
     <ul id="todo-list"></ul>
 </div>
 <script src ="ToDoList.js"></script>
