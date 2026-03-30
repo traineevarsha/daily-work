@@ -1,5 +1,6 @@
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 const errorDiv= document.getElementById('error');
+console.log(priority);
 const errorHoursDiv = document.getElementById('error-hours');
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -8,11 +9,12 @@ function addTodo() {
     const input = document.getElementById("todo-input");
     const time_input = document.getElementById("todo-time-input");
     const hours_taken = document.getElementById("todo-hours-input");
-    const selectedPriority = document.querySelector('input[name="priority"]:checked');
+    const selected_priorty = document.getElementById("priority");
+    priority= selected_priorty.value;
     const text = input.value.trim();
     const time = time_input.value;
     const hours = hours_taken.value;
-    const priority = selectedPriority ? selectedPriority.value : "";
+   
     if (text === "")return;
     if (time === "") return;
     if (hours === "") return;
@@ -28,9 +30,8 @@ function addTodo() {
     input.value = "";
     time_input.value = "";
     hours_taken.value = "";
-    if (selectedPriority) {
-        selectedPriority.checked = false;
-    }
+    selected_priorty.value = "";
+   
     saveTodos();
     renderTodos();
 }

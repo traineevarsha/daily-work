@@ -11,16 +11,13 @@
     <input type="text" onkeyup="validate()" id="todo-input" placeholder="Enter task">
     <input type ="time" id="todo-time-input" placeholder="Enter time">
     <input type="number" onkeyup="validateHours()" id="todo-hours-input" placeholder="Enter how long it'll take in hours">
-    <div class="priority-row">
-            <label>
-                <input type="radio" name="priority" value="Urgent">
-                Urgent
-            </label>
-            <label>
-                <input type="radio" name="priority" value="Normal">
-                Normal
-            </label>
-    </div>
+    <label for ="priority" > Choose a task priority</label>
+    <select name="priority" id="priority">
+    <option value="">Select a priority </option>
+    <option value="high priority">High Priority</option>
+    <option value="normal priority">Normal Priority</option>
+    <option value="low priority">Low Priority</option>
+    </select>
     <div class="button-row">
             <button class="sort-button" onclick="sortByName()">Sort</button>
             <button class="add-button" onclick="addTodo()">Add</button>
