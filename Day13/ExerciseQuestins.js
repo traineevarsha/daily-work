@@ -34,7 +34,7 @@
 // arr = [3, 4];
 // console.log(arr);
 
-let filter_trial =[1,2,3].filter(n => { n>1});
-console.log(filter_trial);
+// let filter_trial =[1,2,3].filter(n => { n>1});
+// console.log(filter_trial);
 
 
