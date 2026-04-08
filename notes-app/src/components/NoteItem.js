@@ -1,9 +1,14 @@
-
 function NoteItem({ note, deleteNote }) {
   return (
-    <li>
-      {note.title} - {note.status}
-      <button onClick={() => deleteNote(note.id)}>Delete</button>
+    <li className="note-item">
+      <div>
+        <span className="note-text">{note.title}</span>
+        <span className="note-status">{note.status}</span>
+      </div>
+      <button
+        className="delete-button" onClick={() => deleteNote(note.id)}>
+        Delete
+      </button>
     </li>
   );
 }

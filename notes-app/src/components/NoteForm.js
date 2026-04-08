@@ -1,35 +1,39 @@
-
 import { useState } from "react";
-
 function NoteForm({ addNote }) {
   const [note, setNote] = useState({
-    title: "my note",
-    status: "created"
+    title: "",
+    status: "open"
   });
-
   const handleSubmit = (event) => {
     event.preventDefault();
     addNote(note);
     setNote({
       title: "",
-      status: ""
+      status: "open"
     });
   };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form className= "note-form" onSubmit={handleSubmit}>
       <input
-        placeholder="Enter note"
+        placeholder="Enter Note"
         value={note.title}
         onChange={(event) => setNote({ ...note, title: event.target.value })}
       />
-      <input
-        value={note.status}
-        onChange={(event) => setNote({ ...note, status: event.target.value })}
-      />
+      <label className = "checkbox-row">
+        <input
+          type="checkbox"
+          checked={note.status === "closed"}
+          onChange={(event) =>
+            setNote({
+              ...note,
+              status: event.target.checked ? "closed" : "open"
+           })
+          }
+        />
+      Status 
+      </label>
       <button>Add</button>
     </form>
   );
 }
-
 export default NoteForm;

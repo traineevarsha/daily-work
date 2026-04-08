@@ -3,7 +3,7 @@ import NoteItem from "./NoteItem";
 import '@testing-library/jest-dom';
 test("calls delete on button click", () => {
   const deleteNote = jest.fn();
-  const note = {id:1, title:"Test",status:"created"};
+  const note = {id:1, title:"Test",status:"open"};
   render(<NoteItem note={note} deleteNote={deleteNote} />);
   fireEvent.click(screen.getByText(/delete/i));
   expect(deleteNote).toHaveBeenCalledWith(1);
