@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 900px;
+  margin: 40px auto;
+}
+
+h2 {
+  margin-bottom: 25px;
+}
+
+.question-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.question-label {
+  width: 90px;
+  font-size: 16px;
+}
+
+.question-select {
+  width: 360px;
+  padding: 8px;
+  font-size: 15px;
+}
+
+.answer-input,
+.confirm-input {
+  width: 220px;
+  padding: 8px;
+  font-size: 15px;
+}
+
+.bottom-section {
+  margin-top: 20px;
+}
+
+.checkbox-row {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.submit-button {
+  padding: 8px 18px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin: 4px 0 0 102px;
+}
