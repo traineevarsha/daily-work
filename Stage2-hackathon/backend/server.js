@@ -1,26 +1,20 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
-
 const app = express();
-
 app.use(cors());
 app.use(express.json());
-
-app.get("/questions", (req, res) => {
+app.get("/questions", (request, response) => {
   const data = fs.readFileSync("questions.json", "utf-8");
-  res.send(JSON.parse(data));
+  response.send(JSON.parse(data));
 });
-
-app.post("/answers", (req, res) => {
-  fs.writeFileSync("answers.json", JSON.stringify(req.body, null, 2));
-  res.send("Answers saved");
+app.post("/answers", (request, response) => {
+  fs.writeFileSync("answers.json", JSON.stringify(request.body, null,2));
+  response.send("Answers saved");
 });
-
 module.exports = app;
-
-if (require.main === module) {
-  app.listen(5000, () => {
-    console.log("Server running on port 5000");
+if (require.main===module) {
+  app.listen(5000, () =>{
+    console.log("Server isrunning on port 5000");
   });
 }
