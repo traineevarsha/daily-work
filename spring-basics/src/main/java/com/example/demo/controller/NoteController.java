@@ -2,13 +2,16 @@ package com.example.demo.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +30,13 @@ public class NoteController {
 	@Autowired
 	NoteService noteService;
 
+	@GetMapping("/{id}")
+	Optional<Order1> getOrderById(@PathVariable Integer id) {
+		return noteService.getOrderById(id);
+	}
+
 	@GetMapping()
-	Order1 getOrder() {
+	Iterable<Order1> getOrder() {
 		return noteService.getOrder();
 	}
 
@@ -48,5 +56,12 @@ public class NoteController {
 			errors.put(fieldName, errorMessage);
 		});
 		return errors;
+	}
+
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+		return "Something went wrong, please retry!";
+
 	}
 }
