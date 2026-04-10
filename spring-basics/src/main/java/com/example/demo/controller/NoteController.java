@@ -1,14 +1,15 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,9 +31,9 @@ public class NoteController {
 	@Autowired
 	NoteService noteService;
 
-	@GetMapping("/{id}")
-	Optional<Order1> getOrderById(@PathVariable Integer id) {
-		return noteService.getOrderById(id);
+	@DeleteMapping("/{id}")
+	void deleteOrderById(@PathVariable Integer id) {
+		noteService.deleteOrderById(id);
 	}
 
 	@GetMapping()
@@ -41,7 +42,7 @@ public class NoteController {
 	}
 
 	@PostMapping()
-	Integer createOrder(@RequestBody @Valid Order1 order1) {
+	Integer createOrder(@RequestBody @Valid Order1 order1) throws IOException {
 		System.out.println(order1.getPrice());
 		return noteService.addOrder(order1);
 	}
