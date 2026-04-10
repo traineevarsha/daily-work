@@ -1,10 +1,52 @@
 package com.example.demo.controller;
 
-//@Component
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Order1;
+import com.example.demo.service.NoteService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/order")
 //@Scope("prototype")
 public class NoteController {
-	public NoteController() {
-		System.out.println("Initial");
+	@Autowired
+	NoteService noteService;
 
+	@GetMapping()
+	Order1 getOrder() {
+		return noteService.getOrder();
+	}
+
+	@PostMapping()
+	Integer createOrder(@RequestBody @Valid Order1 order1) {
+		System.out.println(order1.getPrice());
+		return noteService.addOrder(order1);
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
 	}
 }
