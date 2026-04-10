@@ -3,25 +3,25 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 import com.example.demo.controller.NoteController;
 
 @SpringBootApplication
 public class SpringBasicsApplication {
-	private final NoteController noteController;
-
-	public SpringBasicsApplication(NoteController noteController) {
-		this.noteController = noteController;
+	public static void main(String[] args) {
+		// ConfigurableApplicationContext context1 =
+		// SpringApplication.run(SpringBasicsApplication.class, args);
+		// NoteService service = context1.getBean(NoteService.class);
+		// System.out.println(service);
+		ConfigurableApplicationContext context = SpringApplication.run(SpringBasicsApplication.class, args);
+		NoteController controller = context.getBean(NoteController.class);
+		System.out.println(controller);
 	}
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(SpringBasicsApplication.class, args);
-		ConfigurableApplicationContext context1 = SpringApplication.run(SpringBasicsApplication.class, args);
-		NoteController controller = context.getBean(NoteController.class);
-		NoteController controller1 = context1.getBean(NoteController.class);
-		System.out.println(controller);
-		System.out.println(controller1);
-
+	@Bean
+	NoteController noteController() {
+		return new NoteController();
 	}
 
 }
