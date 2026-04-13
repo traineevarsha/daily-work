@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class PaymentService {
 	boolean processPayment() {
 		return true;

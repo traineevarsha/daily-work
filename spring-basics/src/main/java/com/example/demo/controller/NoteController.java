@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,31 +21,43 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Order1;
+import com.example.demo.repository.Order1Repository;
 import com.example.demo.service.NoteService;
 
 import jakarta.validation.Valid;
 
-@RestController
+@RestController // converts to JSON
 @RequestMapping("/order")
-//@Scope("prototype")
 public class NoteController {
+
+	private final Order1Repository order1Repository;
+
 	@Autowired
 	NoteService noteService;
 
-	@DeleteMapping("/{id}")
-	void deleteOrderById(@PathVariable Integer id) {
-		noteService.deleteOrderById(id);
+	NoteController(Order1Repository order1Repository) {
+		this.order1Repository = order1Repository;
 	}
 
-	@GetMapping()
+	@GetMapping
 	Iterable<Order1> getOrder() {
 		return noteService.getOrder();
 	}
 
-	@PostMapping()
+	@GetMapping("/{id}")
+	Optional<Order1> getOrderById(@PathVariable Integer id) {
+		return noteService.getOrderById(id);
+	}
+
+	@PostMapping
 	Integer createOrder(@RequestBody @Valid Order1 order1) throws IOException {
 		System.out.println(order1.getPrice());
 		return noteService.addOrder(order1);
+	}
+
+	@DeleteMapping("/{id}")
+	void deleteOrderById(@PathVariable Integer id) {
+		noteService.deleteOrderById(id);
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -62,7 +75,6 @@ public class NoteController {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
-		return "Something went wrong, please retry!";
-
+		return "something went wrong, please retry";
 	}
 }
