@@ -1,105 +1,185 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-}
-
-.App {
-  width: 450px;
-  margin: 60px auto;
-  background-color: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+  background: #eef2f7;
   color: #222;
 }
 
-.note-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.note-input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  outline: none;
-}
-
-.note-input:focus {
-  border-color: #4a90e2;
-}
-
-.checkbox-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  color: #333333;
-}
-
-.add-button {
-  padding: 10px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.add-button:hover {
-  background-color: #357abd;
-}
-
-.note-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.note-item {
+.navbar {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto 0;
+  background: white;
+  border: 1px solid #d9dee5;
+  border-radius: 12px 12px 0 0;
+  padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9fafb;
-  padding: 12px;
-  margin-bottom: 10px;
+}
+
+.logo {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+.navbar button {
+  background: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  padding: 8px 14px;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  cursor: pointer;
 }
 
-.note-text {
-  font-size: 15px;
-  color: #222222;
+.navbar button:hover {
+  background: #e5e7eb;
 }
 
-.note-status {
-  font-size: 13px;
-  margin-left: 8px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background-color: #e8f0fe;
-  color: #1a73e8;
+.form {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 25px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #d9dee5;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
 }
 
-.delete-button {
-  background-color: #e74c3c;
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfd6df;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #6b7280;
+  background: white;
+}
+
+.form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form button {
+  width: 100%;
+  padding: 11px;
+  background: #111827;
   color: white;
   border: none;
-  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.form button:hover {
+  background: #1f2937;
+}
+
+.warning {
+  border: 1px solid #ef4444 !important;
+  background: #fff7f7 !important;
+}
+
+.table {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #d9dee5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table th {
+  background: #1f2937;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover {
+  background: #f9fafb;
+}
+
+.table button {
+  margin: 0 4px;
+  padding: 6px 10px;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.delete-button:hover {
-  background-color: #c0392b;
+.table button:first-child {
+  background: #dcfce7;
+  color: #166534;
 }
 
+.table button:last-child {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.table tr.completed {
+  background: #f3f4f6;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.empty {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+  color: #6b7280;
+  background: white;
+  border: 1px solid #d9dee5;
+  border-radius: 12px;
+  padding: 20px;
+}

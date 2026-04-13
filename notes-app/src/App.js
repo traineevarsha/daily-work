@@ -1,23 +1,55 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/NavBar";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
+import axios from "axios";
 import "./App.css";
-function App() {
-  const [notes, setNotes] = useState([]);
-  const addNote = (note) => {
-    const newNote = { ...note };
-    newNote.id = Date.now();
-    setNotes([...notes, newNote]);
-  };
-  const deleteNote = (id) => {
-    setNotes(notes.filter((note) => note.id !== id));
-  };
+function App(){
+  const [notes,setNotes]=useState([]);
+  useEffect(() => {fetchNotes();},[]);
+  const fetchNotes=async()=>{
+  try {
+    const response=await axios.get("http://localhost:8080/notes");
+    setNotes(response.data);
+  } catch(error) {
+    console.error(error);
+  }
+};
+  const addNote=async(note)=>{
+  try {
+    await axios.post("http://localhost:8080/notes",note);
+    fetchNotes();
+  } catch(error){
+    console.error(error);}};
+
+  // const deleteNote = async (id) => {
+  //   const confirmDelete = window.confirm("Are you sure you want to delete this note?");
+  //   if (!confirmDelete) return;
+  //   try {
+  //     await axios.delete(`http://localhost:8080/notes/${id}`);
+  //     setNotes((previous) => previous.filter((note) => note.id !== id));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // const toggleComplete = (id)=>{
+  //   setNotes((previous)=>previous.map((note)=>note.id===id?{...note,completed:!note.completed}:note));
+  // };
   return (
-    <div className ="app-container">
-      <h1 className = "app-title">Notes App</h1>
-      <NoteForm addNote={addNote} />
-      <NoteList notes={notes} deleteNote={deleteNote} />
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<NoteForm addNote={addNote} />} />
+        <Route path="/add" element={<NoteForm addNote={addNote} />} />
+        <Route path="/list" element={<NoteList notes={notes}
+              // deleteNote={deleteNote}
+              // toggleComplete={toggleComplete}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
