@@ -30,14 +30,11 @@ import jakarta.validation.Valid;
 @RequestMapping("/order")
 public class NoteController {
 
-	private final Order1Repository order1Repository;
-
 	@Autowired
 	NoteService noteService;
 
-	NoteController(Order1Repository order1Repository) {
-		this.order1Repository = order1Repository;
-	}
+	@Autowired
+	Order1Repository order1Repository1;
 
 	@GetMapping
 	Iterable<Order1> getOrder() {
@@ -51,7 +48,6 @@ public class NoteController {
 
 	@PostMapping
 	Integer createOrder(@RequestBody @Valid Order1 order1) throws IOException {
-		System.out.println(order1.getPrice());
 		return noteService.addOrder(order1);
 	}
 
