@@ -28,6 +28,15 @@ public class OrderLine {
 	@JoinColumn(name = "order_fk")
 	@JsonBackReference
 	private Order1 order1;
+	private int quantity;
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	public Integer getId() {
 		return id;

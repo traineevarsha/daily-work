@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.Order1;
+import com.example.demo.entity.OrderLine;
 import com.example.demo.repository.Order1Repository;
 
 //@Component
@@ -39,6 +40,9 @@ public class NoteService {
 
 	@Transactional(rollbackFor = Exception.class, noRollbackFor = {}) // for no rollback to happen
 	public Integer addOrder(Order1 order1) {
+		for (OrderLine line : order1.getOrderLines()) {
+			line.setOrder1(order1);
+		}
 		Order1 saved = order1Repository.save(order1);
 		return saved.getId();
 	}

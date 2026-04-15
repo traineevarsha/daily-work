@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,13 @@ public class NoteService {
 	EmailService emailService;
 
 	public Iterable<Order1> getOrder() {
+		try {
+			Thread.sleep(1040);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return order1Repository.findAll();
 	}
 
@@ -32,13 +38,9 @@ public class NoteService {
 	// {IOException.class}//->for rollback to happen
 
 	@Transactional(rollbackFor = Exception.class, noRollbackFor = {}) // for no rollback to happen
-	public Integer addOrder(Order1 order1) throws IOException {
-
-		paymentService.processPayment();
-		order1Repository.save(order1);
-		emailService.send(order1.getId());
-
-		return order1.getId();
+	public Integer addOrder(Order1 order1) {
+		Order1 saved = order1Repository.save(order1);
+		return saved.getId();
 	}
 
 	public Optional<Order1> getOrderById(Integer id) {
@@ -46,7 +48,6 @@ public class NoteService {
 	}
 
 	public void deleteOrderById(Integer id) {
-		// TODO Auto-generated method stub
 		order1Repository.deleteById(id);
 	}
 }
