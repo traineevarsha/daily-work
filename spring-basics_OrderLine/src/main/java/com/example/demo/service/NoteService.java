@@ -24,13 +24,6 @@ public class NoteService {
 	EmailService emailService;
 
 	public Iterable<Order1> getOrder() {
-		try {
-			Thread.sleep(1040);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		return order1Repository.findAll();
 	}
 
@@ -40,7 +33,19 @@ public class NoteService {
 
 	@Transactional(rollbackFor = Exception.class, noRollbackFor = {}) // for no rollback to happen
 	public Integer addOrder(Order1 order1) {
+		if (order1.getOrderLines() == null || order1.getOrderLines().isEmpty()) {
+			throw new RuntimeException("Order must have at least one order line");
+		}
 		for (OrderLine line : order1.getOrderLines()) {
+			if (line.getItem() == null || line.getItem().trim().isEmpty()) {
+				throw new RuntimeException("Item name cannot be empty");
+			}
+			if (line.getPrice() < 1) {
+				throw new RuntimeException("Price must be at least 1");
+			}
+			if (line.getQuantity() < 1) {
+				throw new RuntimeException("Quantity must be at least 1");
+			}
 			line.setOrder1(order1);
 		}
 		Order1 saved = order1Repository.save(order1);

@@ -15,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Order1 {
@@ -23,9 +24,11 @@ public class Order1 {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Valid
+	
 	@OneToMany(mappedBy = "order1", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
+	@NotEmpty
+	@Valid
 	private List<OrderLine> orderLines = new ArrayList<>();
 
 	private LocalDateTime createdAt;
