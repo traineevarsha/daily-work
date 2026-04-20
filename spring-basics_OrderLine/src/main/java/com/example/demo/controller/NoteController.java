@@ -27,7 +27,7 @@ import com.example.demo.service.NoteService;
 
 import jakarta.validation.Valid;
 
-@RestController // converts to JSON
+@RestController
 @RequestMapping("/order")
 public class NoteController {
 
@@ -50,7 +50,6 @@ public class NoteController {
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	
 	Integer createOrder(@RequestBody @Valid Order1 order1) throws IOException {
 		return noteService.addOrder(order1);
 	}
@@ -63,12 +62,12 @@ public class NoteController {
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-		Map<String, String> errors = new HashMap<>();
+	public Map<String,String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String,String> errors=new HashMap<>();
 		ex.getBindingResult().getAllErrors().forEach((error) -> {
-			String fieldName = ((FieldError) error).getField();
-			String errorMessage = error.getDefaultMessage();
-			errors.put(fieldName, errorMessage);
+			String fieldName=((FieldError) error).getField();
+			String errorMessage=error.getDefaultMessage();
+			errors.put(fieldName,errorMessage);
 		});
 		return errors;
 	}

@@ -38,7 +38,7 @@ derby.log
 
 .gradle
 .gradletasknamecache
-pom.xml
+
 ivy-cache
 
 .DS_Store

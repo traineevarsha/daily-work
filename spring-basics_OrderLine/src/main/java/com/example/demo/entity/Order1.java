@@ -24,21 +24,22 @@ public class Order1 {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	
-	@OneToMany(mappedBy = "order1", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "order1",cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonManagedReference
 	@NotEmpty
 	@Valid
-	private List<OrderLine> orderLines = new ArrayList<>();
+	private List<OrderLine> orderLines=new ArrayList<>();
 
+	@Column(name="created_at")
 	private LocalDateTime createdAt;
-	@Column(nullable = false)
+
+	@Column(nullable=false)
 	private String status;
 
 	@PrePersist
 	public void prePersist() {
-		this.createdAt = LocalDateTime.now();
-		this.status = "CREATED";
+		this.createdAt=LocalDateTime.now();
+		this.status="CREATED";
 	}
 
 	public Integer getId() {
@@ -46,7 +47,7 @@ public class Order1 {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id=id;
 	}
 
 	public List<OrderLine> getOrderLines() {
@@ -54,6 +55,22 @@ public class Order1 {
 	}
 
 	public void setOrderLines(List<OrderLine> orderLines) {
-		this.orderLines = orderLines;
+		this.orderLines=orderLines;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt=createdAt;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status=status;
 	}
 }
